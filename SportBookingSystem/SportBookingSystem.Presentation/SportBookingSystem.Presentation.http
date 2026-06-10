@@ -1,0 +1,6 @@
+@SportBookingSystem.Presentation_HostAddress = http://localhost:5017
+
+GET {{SportBookingSystem.Presentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
