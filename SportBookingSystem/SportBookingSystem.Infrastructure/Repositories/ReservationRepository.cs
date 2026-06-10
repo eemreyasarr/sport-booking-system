@@ -1,7 +1,8 @@
-﻿using SportBookingSystem.Application.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using SportBookingSystem.Application.Interfaces;
 using SportBookingSystem.Domain.Entities;
 using SportBookingSystem.Infrastructure.Contexts;
-using Microsoft.EntityFrameworkCore;
+using SportBookingSystem.Infrastructure.Repositories;
 
 namespace SportBookingSystem.Infrastructure.Repositories
 {

@@ -17,6 +17,8 @@ builder.Services.AddDbContext<SportBookingDbContext>(
 
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IFacilityService, FacilityService>();
+builder.Services.AddScoped<IFacilityRepository, FacilityRepository>();
 
 //Swagger
 builder.Services.AddEndpointsApiExplorer();

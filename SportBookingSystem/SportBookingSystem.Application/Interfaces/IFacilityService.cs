@@ -6,8 +6,8 @@ using System.Text;
 
 namespace SportBookingSystem.Application.Interfaces
 {
-    public interface IReservationService
+    public interface IFacilityService
     {
-        Task<ApiResponse<Reservation>> CreateReservationAsync(CreateReservationRequest request);
+        Task<ApiResponse<Facility>> CreateFacilityAsync(CreateFacilityRequest request);
     }
 }

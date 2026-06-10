@@ -16,18 +16,18 @@ namespace SportBookingSystem.Application.Services
             _reservationRepository = reservationRepository;
         }
 
-        public async Task<ApiResponse<Guid>> CreateReservationAsync(CreateReservationRequest request)
+        public async Task<ApiResponse<Reservation>> CreateReservationAsync(CreateReservationRequest request)
         {
             var hasOverlap = await _reservationRepository.HasOverlappingReservationAsync(request.ResourceId, request.StartDateTime, request.EndDateTime);
 
             if (hasOverlap)
             {
-                return new ApiResponse<Guid>
+                return new ApiResponse<Reservation>
                 {
                     Success = false,
                     StatusCode = 409, // Conflict
                     Message = "Overlapping reservation exists",
-                    Data = request.ResourceId
+                    Data = null
                 };
             }
 
@@ -39,12 +39,12 @@ namespace SportBookingSystem.Application.Services
 
             await _reservationRepository.AddAsync(reservation);
 
-            return new ApiResponse<Guid>
+            return new ApiResponse<Reservation>
             {
                 Success = true,
                 StatusCode = 200,
                 Message = "Reservation created successfully",
-                Data = reservation.Id
+                Data = reservation
             };
         }
     }
