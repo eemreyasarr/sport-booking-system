@@ -1,0 +1,31 @@
+﻿using SportBookingSystem.Application.Interfaces;
+using SportBookingSystem.Domain.Entities;
+using SportBookingSystem.Infrastructure.Contexts;
+using Microsoft.EntityFrameworkCore;
+
+namespace SportBookingSystem.Infrastructure.Repositories
+{
+    public class ReservationRepository : IReservationRepository
+    {
+        private readonly SportBookingDbContext _context;
+
+        public ReservationRepository(SportBookingDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<bool> HasOverlappingReservationAsync(Guid resourceId, DateTime startDateTime, DateTime endDateTime)
+        {
+            return await _context.Reservations.AnyAsync(x =>
+                x.ResourceId == resourceId &&
+                x.StartDateTime < endDateTime &&
+                startDateTime < x.EndDateTime);
+        }
+
+        public async Task AddAsync(Reservation reservation)
+        {
+            await _context.Reservations.AddAsync(reservation);
+            await _context.SaveChangesAsync();
+        }
+    }
+}
