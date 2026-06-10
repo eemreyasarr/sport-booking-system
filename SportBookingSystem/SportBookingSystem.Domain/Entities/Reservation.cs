@@ -19,9 +19,7 @@ namespace SportBookingSystem.Domain.Entities
 
         public ReservationStatus Status { get; private set; }
 
-        private Reservation()
-        {
-        }
+        private Reservation(){}
 
         public Reservation( Guid resourceId, string userEmail, DateTime start, DateTime end)
         {

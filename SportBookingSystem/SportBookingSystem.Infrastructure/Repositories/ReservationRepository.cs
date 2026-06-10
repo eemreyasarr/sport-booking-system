@@ -16,7 +16,7 @@ namespace SportBookingSystem.Infrastructure.Repositories
 
         public async Task<bool> HasOverlappingReservationAsync(Guid resourceId, DateTime startDateTime, DateTime endDateTime)
         {
-            return await _context.Reservations.AnyAsync(x =>
+            return await _context.Reservation.AnyAsync(x =>
                 x.ResourceId == resourceId &&
                 x.StartDateTime < endDateTime &&
                 startDateTime < x.EndDateTime);
@@ -24,7 +24,7 @@ namespace SportBookingSystem.Infrastructure.Repositories
 
         public async Task AddAsync(Reservation reservation)
         {
-            await _context.Reservations.AddAsync(reservation);
+            await _context.Reservation.AddAsync(reservation);
             await _context.SaveChangesAsync();
         }
     }

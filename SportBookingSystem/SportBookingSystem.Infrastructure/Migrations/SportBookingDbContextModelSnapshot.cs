@@ -43,7 +43,7 @@ namespace SportBookingSystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Resources");
+                    b.ToTable("BookableResource");
                 });
 
             modelBuilder.Entity("SportBookingSystem.Domain.Entities.Facility", b =>
@@ -62,7 +62,7 @@ namespace SportBookingSystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Facilities");
+                    b.ToTable("Facility");
                 });
 
             modelBuilder.Entity("SportBookingSystem.Domain.Entities.Reservation", b =>
@@ -89,7 +89,7 @@ namespace SportBookingSystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservation");
                 });
 #pragma warning restore 612, 618
         }
